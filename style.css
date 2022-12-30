@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+:root {
+    --color-dark-text: hsl(229, 25%, 31%);
+    --color-score-text: hsl(229, 64%, 46%);
+    --color-header-outline: hsl(217, 16%, 45%);
+}
+header {
+    border: 3px solid var(--color-header-outline);
+    width: 800px;
+    height: 150px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto; 
+    display: flex;
+    border-radius: 5px;
+}
+.title {
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    flex-grow: 3;
+    padding-left: 10px;
+    padding-top: 15px;
+   
+}
+.score {
+    flex-grow: 1;
+    background-color: white;
+    height: 100px;
+    width: 30px;
+    margin: 25px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+h4 {
+  color: var(--color-score-text);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+}
+span {
+    font-size: 50px;
+    color: var(--color-dark-text);
+    font-weight: 700;
+}
+.triangle {
+    margin-top: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -1;
+    
+}
+.paper {
+    border-radius: 50%; 
+  width: 150px;
+  height: 150px;
+position: fixed;
+top: 220px;
+left: 580px;    
+    border: 20px solid hsl(230, 89%, 62%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.rock {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    bottom: 130px;
+    left: 700px;
+    border: 20px solid hsl(349, 70%, 56%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.scissors {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    top: 220px;
+    left: 820px;
+    border: 20px solid hsl(40, 84%, 53%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.rules {
+    display: block;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 100px;
+    font-size: 24px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 10px;
+    width: 150px;
+    height: 48px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+.paper:hover, .scissors:hover, .rock:hover {
+    background-color: lightgray;
+}
+.popup {
+position: fixed;
+background-color: white;
+border-radius: 5px;
+padding: 80px;
+top: 220px;
+left: 550px;
+z-index: 9999;
+visibility: hidden;
+}
+.close {
+    cursor: pointer;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    font-size: 35px;
+    top: 10px;
+    right: 10px;
+    color: grey;
+   
+}
+.close:hover {
+    color: black;
+}
+.win {
+    color: greenyellow;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    opacity: 40%;
+    margin-top: 20px;
+    animation: showwin 0.4s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes showwin {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.play-again {
+    display: block;
+    margin: 5px auto;
+    font-size: 24px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 10px;
+    width: 200px;
+    height: 48px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    opacity: 40%;
+}
+.you, .computer {
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+   position: fixed;
+}
+.you {
+    top: 280px;
+    left: 280px;
+}
+.computer {
+    top: 280px;
+    right: 280px;
+}
+.none {
+    display: none;
+}
+.result-page {
+    width: 100vw;
+    height: 50vh;
+}
+.player-move, .computer-move {
+    display: block;
+    position: absolute; 
+    top: 350px;
+}
+.player-move {
+    left: 320px;
+    animation: slideLeft 0.4s ease-in;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+}
+.computer-move {
+    right: 370px;
+    animation: slideRight 0.4s ease-in;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+}
+.result::after {
+    content: "vs";
+    animation: counting 3s ease-in;
+    color: white; 
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+  
+  @keyframes slideLeft {
+    0% {
+        transform: translateX(-300%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slideRight {
+    0% {
+        transform: translateX(300%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes counting {
+    0% {
+      content: "3";
+    }
+    33% {
+      content: "2";
+    }
+    66% {
+      content: "1";
+    }
+    100% {
+      content: "vs";
+    }
+  }
